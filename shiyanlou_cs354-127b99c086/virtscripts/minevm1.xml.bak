@@ -1,0 +1,58 @@
+<!-- 虚拟化的类型，可以使qemu，kvm等 -->
+<domain type='qemu'>
+  <!-- 虚拟机名称 -->
+  <name>minevm1</name> 
+  <!-- 虚拟CPU个数 -->
+  <vcpu>1</vcpu>
+  <!-- 虚拟内存数，默认为KB -->
+  <memory>102400</memory>
+  <!-- 操作系统类型 -->
+  <os> 
+    <type arch='x86_64' machine='pc-1.0'>hvm</type>
+    <boot dev='hd'/>
+  </os>
+  <!-- 虚拟硬件的功能表 -->
+  <features>
+    <acpi/>
+    <apic/>
+    <pae/>
+  </features>
+  <!-- 虚拟硬件上的时钟配置 -->
+  <clock offset='utc'/>
+  <!-- 虚拟机内部关机时自动释放资源 -->
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot> 
+  <!-- 系统崩溃时自动重启 -->
+  <on_crash>restart</on_crash>
+  <!-- 虚拟设备列表-->
+  <devices> 
+    <!-- 虚拟设备模拟器路径 -->
+    <emulator>/usr/bin/qemu-system-x86_64</emulator>
+    <!-- 虚拟磁盘配置 -->
+    <disk type='file' device='disk'>
+      <!-- 虚拟磁盘的驱动类型和格式-->
+      <driver name='qemu' type='qcow2'/> 
+      <!-- 虚拟磁盘的路径 -->
+      <source file='/home/shiyanlou/Code/shiyanlou_cs354/qemu-disk/minevm1.qcow2'/>
+      <!-- 虚拟磁盘连接方式-->
+      <target dev='hda' bus='ide'/> 
+      <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+    </disk>
+    <!-- 虚拟网络配置 -->
+    <interface type='network'>
+      <!-- 虚拟网络名称 -->
+      <source network='default'/>
+      <!-- 虚拟网络驱动方式 -->
+      <model type='virtio'/> 
+      <!-- 虚拟网络过滤器配置 -->
+      <filterref filter='clean-traffic'/>
+    </interface>
+    <!-- 虚拟机界面连接方式选用VNC，VNC端口设置为随机产生 -->
+    <graphics type='vnc' port='-1' autoport='yes'/> 
+    <!-- 输入配置 -->
+    <input type='tablet' bus='usb'/> 
+    <memballoon model='virtio'>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x05' function='0x0'/>
+    </memballoon>
+  </devices>
+</domain>

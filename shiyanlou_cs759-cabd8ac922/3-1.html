@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Vuejs Simple Demo 3</title>
+		<script type="text/javascript" src="./vue.js"></script>
+		<!--
+		<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+		-->
+	</head>
+	<body>
+		<div id="demo">
+			<h1>{{ msg }}</h1>
+			<!-- <form name="myvue" @submit.prevent> -->
+			<form name="myvue" v-on:submit.prevent="additem(newitem)">
+				<div v-for="(item, index) in items">
+					<label>
+						{{ item.text }}
+						<button v-on:click="delitem(index)">Del</button>
+					</label>
+				</div>
+
+				<div>
+					<input type="text" v-model="newitem.text">
+				</div>
+				
+				<div>
+					<button>Add</button>
+				</div>
+			</form>
+		</div>
+		<script>
+			new Vue({
+				el: '#demo',
+				data: {
+					msg: 'shiyanlou vuejs demo',
+					items: [
+						{text: 'hello shiyanlou'}
+					],
+					newitem: {text:''}
+				},
+				methods: {
+					additem(newitem) {
+						this.items.push(newitem),
+						this.newitem={text:''}
+					},
+					delitem(index) {
+						this.items.splice(index, 1),
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

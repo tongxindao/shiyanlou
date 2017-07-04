@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>shiyanlou</title>
+</head>
+<body>
+Programming every time, everywhere. There are some courses: <br />
+    {% for i in TutorialList %}
+    	{{ i }} 
+    	{% if not forloop.last %}
+		,
+    	{% endif %}
+    {% endfor %}
+</body>
+</html>

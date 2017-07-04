@@ -1,0 +1,52 @@
+import libvirt
+import re
+
+class mcvm:
+    def createVM(host, xml_file):
+        file_name = str(xml_file)
+        xml_file = open(file_name)
+        domainXMLString = xmlfile.read()
+        domain = host.defineXML(domainXMLString)
+        if(domain):
+            return True
+        return False
+
+    def shutdownVM(host, vmname):
+        domain = host.lookupByName(vmname)
+        isShutdown = domain.destroy()
+        if isShutdown == 0:
+            return True
+        return False
+
+    def startVM(host, vmname):
+        domain = host.lookupByName(vmname)
+        isStart = domain.create()
+        if isStart == 0:
+            return True
+        return False
+
+    def getVNCPort(host, vmname):
+        domain = host.lookupByName(vmname)
+        xml = domain.XMLDesc()
+        reg = '\' port=\'(.*)\' a'
+        vncport = re.search(reg, xml)
+        if vncport == None:
+            return None
+        return vncport.group(1)
+
+    def rebootVM(host, vmname):
+        domain = host.lookupByName(vmname)
+        isReboot = domain.reboot()
+        if isReboot == 0:
+            return True
+        return False
+
+    def deleteVM(host, vmname):
+        domain = host.lookupByName(vmname)
+        isDestroy = domain.destroy()
+        if isDestroy == 0:
+            isUndefine = domain.undefine()
+            if isUndefine == 0:
+                return True
+            return False
+        return False

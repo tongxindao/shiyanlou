@@ -1,0 +1,11 @@
+# _*_ coding: utf-8 _*_
+
+from django.shortcuts import render
+from django.template.context_processors import csrf
+# from django.core.context_processors import csrf
+def investigate(request):
+    ctx = {}
+    ctx.update(csrf(request))
+    if request.POST:
+        ctx['rlt'] = request.POST['staff']
+    return render(request, "investigate.html", ctx)

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>shiyanlou</title>
+</head>
+<body>
+
+{% include 'nav.html' %}
+
+{% block content %}
+<div>This is default infomation, all extend this templates, if it's not cover, then it's show this infomation.</div>
+{% endblock %}
+
+{% include 'bottom.html' %}
+
+{% include 'tongji.html' %}
+
+</body>
+</html>

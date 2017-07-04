@@ -1,0 +1,10 @@
+{% extends "master.html" %}
+
+{% block title %}Hello{% endblock %}
+
+{% block body %}
+Hello {{name}}
+<a href="{{ url_for('index') }}">
+<button>Home</button>
+</a>
+{% endblock %}

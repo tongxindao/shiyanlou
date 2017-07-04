@@ -1,0 +1,8 @@
+# _*_ coding: utf-8 _*_
+
+from west.models import Character
+from django.shortcuts import render
+
+def staff(request):
+    staff_list = Character.objects.all()
+    return render(request, 'templay.html', {'staffs': staff_list})

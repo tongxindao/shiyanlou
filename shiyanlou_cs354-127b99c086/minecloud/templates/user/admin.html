@@ -1,0 +1,46 @@
+{% extends "base/base.html" %}
+
+{% from "macros/_form.html" import render_form %}
+
+{% block body %}
+
+<h2>当前用户为  {{ current_user.name }}</h2>
+<div class="btn btn-success" data-toggle="modal" data-target="#myModal">+ 添加用户</div>
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>用户名</th>
+				<th>类型</th>
+				<th>编辑</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in users %}
+			<tr>
+				<td>{{ item.id }}</td>
+				<td>{{ item.name }}</td>
+				<td>{{ item.type_code }}</td>
+				<td>
+					{% if item.type_code != 0 %}
+					<a href="{{ url_for('user.delete_user', user_id=item.id )}}"><span class="btn btn-default">删除</span></a>
+					{% endif %}
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">添加用户<h4>
+				</div>
+				<div class="modal-body">
+					{{ render_form(url_for('user.add_user'), form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

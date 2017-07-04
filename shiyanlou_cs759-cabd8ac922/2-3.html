@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Vuejs Simple Demo 2-3</title>
+		<script type="text/javascript" src="./vue.js"></script>
+		<!--
+		<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+		-->
+	</head>
+	<body>
+		<div id="demo">
+			<p>first</p>
+			<p>This section will show "You can see me!"</p>
+			<span v-if="Show">You can see me!</span>
+			<span v-else>You can not see me?</span>
+			<br><hr>
+			<p>second</p>
+			<p>This section will show "You can not see me?"</p>
+			<span v-if="hide">You can not see me!</span>
+			<span v-else>You can not see me?</span>
+			<br><hr>
+			<p>thrid</p>
+			<p>This section will show "You really can see me!"</p>
+			<span v-if="hide">You can see me!</span>
+			<span v-else-if="hide">You can not see me?</span>
+			<span v-else>You really can see me!</span>
+		</div>
+		<script>
+			new Vue({
+				el: '#demo',
+				data: {
+					Show: true,
+					hide: false
+				}
+			})
+		</script>
+	</body>
+</html>

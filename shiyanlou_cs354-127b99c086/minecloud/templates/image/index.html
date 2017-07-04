@@ -1,0 +1,41 @@
+{% extends "base/base.html" %}
+{% from "macros/_form.html" import render_form %}
+
+{% block body %}
+	<div class="btn btn-success" data-toggle="modal" data-target="#myModal">+ 添加镜像</div>
+	<table class="table table-bordered table-striped table-hover">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>镜像名</th>
+				<th>路径</th>
+				<th>编辑</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in image_list %}
+			<tr>
+				<td>{{ item.id }}</td>
+				<td>{{ item.name }}</td>
+				<td>{{ item.path }}</td>
+				<td>
+					<a href="{{ url_for('image.delete_image', image_id=item.id )}}"><span class="btn btn-default">删除</span></a>
+				</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<div class="modal fade" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title">添加镜像<h4>
+				</div>
+				<div class="modal-body">
+					{{ render_form(url_for('image.index'), form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

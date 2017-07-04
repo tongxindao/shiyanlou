@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Vuejs Simple Demo 4-4</title>
+		<script type="text/javascript" src="./vue.js"></script>
+		<!--
+		<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+		-->
+	</head>
+	<body>
+		<div id="demo">
+			<my-component v-bind:msg='msg'></my-component>
+			<my-component></my-component>
+			<my-component></my-component>
+		</div>
+		<script type="text/tmplate-x" id="my_component">
+			<div>This is one vuejs component demo! {{msg}}</div>
+		</script>
+		<script>
+			Vue.component('my-component', {
+				template: '#my_component',
+				props: ['msg'],
+				data: [
+
+				]
+			})
+
+			new Vue({
+				el: '#demo',
+				data: {
+					msg: 'vue.js component'
+				}
+			})
+		</script>
+	</body>
+</html>

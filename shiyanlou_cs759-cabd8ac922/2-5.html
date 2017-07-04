@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>Vuejs Simple Demo 2-5</title>
+		<script type="text/javascript" src="./vue.js"></script>
+		<!--
+		<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+		-->
+	</head>
+	<body>
+		<div id="demo">
+			<button v-on:click="doThis">{{ msg }}</button>
+		</div>
+		<script>
+			new Vue({
+				el: '#demo',
+				data: {
+					msg: 'click button',
+					name: 'vuejs'
+				},
+				methods: {
+					doThis: function(e) {
+						console.log(this);
+						console.log(e.target);
+						console.log('hello'+this.name+'!');
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
