@@ -4,7 +4,6 @@ class Route:
     '''
 
     def __init__(self, app):
-
         # introduction app (framework) instance
         self.app = app
 
