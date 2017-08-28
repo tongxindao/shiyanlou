@@ -70,6 +70,26 @@ class PyFlk:
         # route decorator
         self.route = Route(self)
 
+    def bind_view(self, url, view_class, endpoint):
+        '''
+        add view rule
+        '''
+        self.add_url_rule(url, func=view_class.get_func(endpoint), func_type='view')
+
+    def load_controller(self, controller):
+        '''
+        load controller
+        '''
+        
+        # gets controller name
+        name = controller.__name__()
+
+        # ergodic controller's `url_map` member
+        for rule in controller.url_map:
+
+            # bind URL and view object, final endpoint name format is `controller name` + "." + define endpoint name
+            self.bind_view(rule['url'], rule['view'], name + '.' + rule['endpoint'])
+
     def add_url_rule(self, url, func, func_type, endpoint=None, **options):
         '''
         add url rule
