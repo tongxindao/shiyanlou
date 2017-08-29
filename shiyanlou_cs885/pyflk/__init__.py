@@ -3,11 +3,13 @@ import os
 from werkzeug.wrappers import Response
 from werkzeug.serving import run_simple
 
-import pyflk.exceptions as exceptions
 from pyflk.route import Route
 from pyflk.wsgi_adapter import wsgi_app
 from pyflk.helper import parse_static_key
 from pyflk.template_engine import replace_template
+from pyflk.session import create_session_id, session
+
+import pyflk.exceptions as exceptions
 
 # define common service exception's response body
 ERROR_MAP = {
@@ -48,7 +50,7 @@ class PyFlk:
     # class attribute, template file local store folder
     template_folder = None
 
-    def __init__(self, static_folder='static', template_folder='template'):
+    def __init__(self, static_folder='static', template_folder='template', session_path='.session'):
         '''
         instance method
         '''
@@ -79,6 +81,9 @@ class PyFlk:
 
         # route decorator
         self.route = Route(self)
+
+        # Session record default save to .session folder same path to app
+        self.session_path = session_path
 
     def bind_view(self, url, view_class, endpoint):
         '''
@@ -156,6 +161,26 @@ class PyFlk:
         # extract path/file from the domain, eg http://xxx.com/path/file?xx=xx
         url = "/" + "/".join(request.url.split("/")[3:]).split("?")[0]
 
+        # gets Cookie from the request
+        cookies = request.cookies
+
+        # if key `session_id` not in cookies, then notice client set Cookie
+        if 'session_id' not in cookies:
+            headers = {
+            
+                # define Set-Cookie attribute, notice client record Cookie, create_session_id is generate a ruleless only string method
+                'Set-Cookie': 'session_id=%s' % create_session_id(),
+
+                # define response header's Server attribute
+                'Server': 'PyFlk Web Framework 0.1'
+            }
+        else:
+            
+            # define response header's Server attribute
+            headers = {
+                'Server': 'PyFlk Web Framework 0.1'
+            }
+
         # through URL find endpoint
         if url.find(self.static_folder) == 1 and url.index(self.static_folder) == 1:
             
@@ -166,11 +191,6 @@ class PyFlk:
     
             # if static not first, then from the URL and endpoint mapping table gets endpoint
             endpoint = self.url_map.get(url, None)
-
-        # define response header
-        headers = {
-            'Server': 'PyFlk Web Framework 0.1'
-        }
 
         # if endpoint is none, return 404
         if endpoint is None:
@@ -257,8 +277,18 @@ class PyFlk:
         # mapping static resource handle function, all of the static resource handle function is static resource
         self.function_map['static'] = ExecFunc(func=self.dispatch_static, func_type='static')
 
+        # if Session record storage path not exist then create it
+        if not os.path.exists(self.session_path):
+            os.mkdir(self.session_path)
+
+        # set Session record storage path
+        session.set_storage_path(self.session_path)
+
+        # load local cache Session record
+        # session.load_local_session()        
+
         # transfer parameter to werkzeug's run_simple
-        run_simple(hostname=self.host, port=self.port, application=self, **options)
+        run_simple(hostname=self.host, port=self.port, application=self)
 
     def __call__(self, environ, start_response):
         '''
