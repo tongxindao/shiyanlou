@@ -1,11 +1,11 @@
-from pyflk import PyFlk
+from pyflk import PyFlk, simple_template
 from pyflk.view import Controller
 
 from core.base_view import BaseView
 
 class Index(BaseView):
     def get(self, request):
-        return 'Hello, World!'
+        return simple_template('index.html', user='Alice' , message='Hello, World!')
 
 class Test(Index):
     def post(self, request):

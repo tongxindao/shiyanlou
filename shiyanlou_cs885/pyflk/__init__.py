@@ -7,6 +7,7 @@ import pyflk.exceptions as exceptions
 from pyflk.route import Route
 from pyflk.wsgi_adapter import wsgi_app
 from pyflk.helper import parse_static_key
+from pyflk.template_engine import replace_template
 
 # define common service exception's response body
 ERROR_MAP = {
@@ -44,7 +45,10 @@ class PyFlk:
     Framework name
     '''
 
-    def __init__(self, static_folder='static'):
+    # class attribute, template file local store folder
+    template_folder = None
+
+    def __init__(self, static_folder='static', template_folder='template'):
         '''
         instance method
         '''
@@ -66,6 +70,12 @@ class PyFlk:
 
         # static resource local store path, default path is app/static folder
         self.static_folder = static_folder
+
+        # template file local store path, default app/template
+        self.template_folder = template_folder
+
+        # class's template_folder init, replace template engine call it
+        PyFlk.template_folder = self.template_folder
 
         # route decorator
         self.route = Route(self)
@@ -256,3 +266,6 @@ class PyFlk:
         '''
         
         return wsgi_app(self, environ, start_response)
+
+def simple_template(path, **options):
+    return replace_template(PyFlk, path, **options)
