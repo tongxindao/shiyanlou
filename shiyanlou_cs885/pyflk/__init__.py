@@ -201,12 +201,10 @@ class PyFlk:
 
         # decide excute function type
         if exec_function.func_type == 'route':
-
             ''' route handle '''
             
             # decide request method whether or not support
             if request.method in exec_function.options.get('methods'):
-
                 ''' route handle result '''
 
                 # decide route's excute function whether or not need request body conduct internal processing
@@ -226,19 +224,16 @@ class PyFlk:
                 # return 401 error response body
                 return ERROR_MAP['401']
         elif exec_function.func_type == 'view':
-
             ''' view handle result '''
 
             # all of the view handle function needs in passing request body gets handle result
             rep = exec_function.func(request)
         elif exec_function.func_type == 'static':
-
             ''' static logic handle '''
 
             # static resource return packaged response body
             return exec_function.func(url)
         else:
-
             ''' unknown type handle '''
 
             # return 503 error response body
@@ -249,6 +244,10 @@ class PyFlk:
 
         # define response body type
         content_type = 'text/html'
+
+        # decide if return value is a Response type, then direct return
+        if isinstance(rep, Response):
+            return rep
 
         # return response body
         return Response(rep, 
@@ -296,6 +295,18 @@ class PyFlk:
         '''
         
         return wsgi_app(self, environ, start_response)
+
+def redirect(url, status_code=302):
+    ''' URL redirect method '''
+
+    # define a response body
+    response = Response('', status=status_code)
+
+    # response body header Location parameter and URL bind, notice client auto skip
+    response.headers['Location'] = url
+
+    # return response body
+    return response
 
 def simple_template(path, **options):
     return replace_template(PyFlk, path, **options)

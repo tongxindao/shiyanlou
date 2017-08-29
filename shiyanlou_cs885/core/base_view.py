@@ -1,3 +1,4 @@
+from pyflk import redirect
 from pyflk.view import View
 from pyflk.session import AuthSession, session
 
@@ -38,7 +39,7 @@ class AuthLogin(AuthSession):
     def auth_fail_callback(request, *args, **options):
         ''' if auth fail, then return a lick, click it skip to login page '''
 
-        return '<a href="/login">Login</a>'
+        return redirect("/login")
 
     @staticmethod
     def auth_logic(request, *args, **options):

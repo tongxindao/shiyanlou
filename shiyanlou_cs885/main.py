@@ -1,3 +1,4 @@
+from pyflk import redirect
 from pyflk.view import Controller
 from pyflk.session import session
 from pyflk import PyFlk, simple_template
@@ -34,7 +35,7 @@ class Login(BaseView):
         session.push(request, 'user', user)
 
         # return login success prompt and index link
-        return 'login success, <a href="/">back</a>'
+        return redirect("/")
 
 class Logout(SessionView):
     '''
@@ -47,7 +48,7 @@ class Logout(SessionView):
         session.pop(request, 'user')
 
         # return logout success prompt and index link
-        return 'logout success, <a href="/">back</a>'
+        return redirect("/")
 
 py_url_map = [
     {
