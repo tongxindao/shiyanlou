@@ -63,6 +63,33 @@ def render_json(data):
     # return package response body
     return Response(data, content_type="%s; charset=UTF-8" % content_type, status=200)
 
+def render_file(file_path, file_name=None):
+    '''
+    return let client save file to local response body
+    '''
+    
+    # decide server if or not exist that file, if not then return 404 error
+    if os.path.exists(file_path):
+        
+        # read file content
+        with open(file_path, 'rb') as f:
+            content = f.read()
+
+        # if not set file name, then use "/" divide get last one item for file name
+        if file_name is None:
+            file_name = file_path.split("/")[-1]
+
+        # package response headers, set attachment type and define download file name
+        headers = {
+            'Content-Disposition': 'attachment; filename="%s"' % file_name
+        }
+
+        # return response
+        return Response(content, headers=headers, status=200)
+
+    # if this file not exists, return 404 error
+    return ERROR_MAP['404']
+
 class PyFlk:
     '''
     Framework name

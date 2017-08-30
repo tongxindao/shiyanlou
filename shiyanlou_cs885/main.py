@@ -1,8 +1,12 @@
 from pyflk.view import Controller
 from pyflk.session import session
-from pyflk import PyFlk, simple_template, redirect, render_json
+from pyflk import PyFlk, simple_template, redirect, render_json, render_file
 
 from core.base_view import BaseView, SessionView
+
+class Download(BaseView):
+    def get(self, request):
+        return render_file("main.py")
 
 class API(BaseView):
     def get(self, request):
@@ -78,6 +82,11 @@ py_url_map = [
         'url': '/api',
         'view': API,
         'endpoint': 'api'
+    },
+    {
+        'url': '/download',
+        'view': Download,
+        'endpoint': 'download'
     }
 ]
 
