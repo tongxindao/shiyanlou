@@ -284,7 +284,7 @@ class PyFlk:
         session.set_storage_path(self.session_path)
 
         # load local cache Session record
-        # session.load_local_session()        
+        session.load_local_session()        
 
         # transfer parameter to werkzeug's run_simple
         run_simple(hostname=self.host, port=self.port, application=self)

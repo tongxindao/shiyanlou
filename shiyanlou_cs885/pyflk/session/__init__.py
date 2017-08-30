@@ -9,7 +9,7 @@ def create_session_id():
     '''
 
     # first of all, get current time stamp and convert byte stream, in Base64 code, decode to string and put off Base64 code "=" symbol, get second to last bit, final reverse order array
-    return base64.encodebytes(str(time.time()).encode()).decode().replace("=", '')[:-2][::-1]
+    return base64.encodebytes(str(time.time()).encode()).decode().replace("=", "")[:-2][::-1]
 
 def get_session_id(request):
     '''
@@ -122,7 +122,7 @@ class Session:
                 content = base64.decodebytes(content)
 
                 # Session ID content bind and add to Session mapping table
-                self.__sesssion_map__[session_id] = json.loads(content.decode())
+                self.__session_map__[session_id] = json.loads(content.decode())
 
     def map(self, request):
         ''' gets current Session record '''
