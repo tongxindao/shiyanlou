@@ -1,9 +1,17 @@
-from pyflk import redirect
 from pyflk.view import Controller
 from pyflk.session import session
-from pyflk import PyFlk, simple_template
+from pyflk import PyFlk, simple_template, redirect, render_json
 
 from core.base_view import BaseView, SessionView
+
+class API(BaseView):
+    def get(self, request):
+        data = {
+            'name': 'user_001',
+            'company': 'Google',
+            'department': 'Research and Development Department'
+        }
+        return render_json(data)
 
 class Index(SessionView):
     '''
@@ -65,6 +73,11 @@ py_url_map = [
         'url': '/logout',
         'view': Logout,
         'endpoint': 'logout'
+    },
+    {
+        'url': '/api',
+        'view': API,
+        'endpoint': 'api'
     }
 ]
 

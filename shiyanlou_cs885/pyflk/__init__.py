@@ -1,4 +1,5 @@
 import os
+import json
 
 from werkzeug.wrappers import Response
 from werkzeug.serving import run_simple
@@ -41,6 +42,26 @@ class ExecFunc:
 
         # function type
         self.func_type = func_type
+
+def render_json(data):
+    '''
+    package JSON data repsonse packet
+    '''
+
+    # define default file type is text
+    content_type = "text/plain"
+
+    # if it's type is Dict or List, then start convert to JSON format data
+    if isinstance(data, dict) or isinstance(data, list):
+
+        # data convert to JSON data format
+        data = json.dumps(data)
+
+        # define file type is JSON format
+        content_type = "application/json"
+
+    # return package response body
+    return Response(data, content_type="%s; charset=UTF-8" % content_type, status=200)
 
 class PyFlk:
     '''
