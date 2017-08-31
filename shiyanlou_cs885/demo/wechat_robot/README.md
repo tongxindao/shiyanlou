@@ -38,5 +38,3 @@ wechat_robot
     ├── index               # index controller template
     ├── login               # login controller template
     └── user                # user controller template
-
-17 directories, 21 files
