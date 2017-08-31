@@ -2,7 +2,27 @@ from pyflk.view import Controller
 from pyflk.session import session
 from pyflk import PyFlk, simple_template, redirect, render_json, render_file
 
+from core.database import dbconn
 from core.base_view import BaseView, SessionView
+
+class Register(BaseView):
+    def get(self, request):
+
+        # when get GET request through template return a register page
+        return simple_template('layout.html', title='register', message='input register name')
+
+    def post(self, request):
+
+        # put user commit information for parameter, execute SQL INSERT statement put information save to database table
+        ret = dbconn.insert('INSERT INTO user(f_name) VALUES (%(user)s)', request.form)
+
+        # if insert success, its means register success, redirect to login page
+        if ret.suc:
+            return redirect('/login')
+        else:
+ 
+            # if fail, put error information for debug
+            return render_json(ret.to_dict())
 
 class Download(BaseView):
     def get(self, request):
@@ -36,18 +56,30 @@ class Login(BaseView):
     '''
 
     def get(self, request):
-        return simple_template('login.html')
+
+        # from GET request gets state parameter, if not exist then return default value 1
+        state = request.args.get('state', '1')
+
+        # through template return login page, when state isn't 1, page information return username error or not exist
+        return simple_template('layout.html', title='login', message='input username' if state == '1' else 'username error or not exist, re-enter')
 
     def post(self, request):
 
-        # gets user parameter's value from the POST request
-        user = request.form['user']
+        # put user commit information to database query
+        ret = dbconn.execute('''SELECT * FROM user WHERE f_name = %(user)s''', request.form) 
 
-        # user save to current Session
-        session.push(request, 'user', user)
+        # if have match result the means its had register, otherwise redirect login page and put state=0, notice page show login error information
+        if ret.rows == 1:
 
-        # return login success prompt and index link
-        return redirect("/")
+            # if matched, get first item data f_name field for username
+            user = ret.get_first()['f_name'] 
+
+            # put username to Session
+            session.push(request, 'user', user)
+
+            # Session check success, so redirect to index page
+            return redirect('/') 
+        return redirect('/login?state=0')
 
 class Logout(SessionView):
     '''
@@ -87,6 +119,11 @@ py_url_map = [
         'url': '/download',
         'view': Download,
         'endpoint': 'download'
+    },
+    {
+        'url': '/register',
+        'view': Register,
+        'endpoint': 'register'
     }
 ]
 
