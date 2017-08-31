@@ -12,13 +12,6 @@ from pyflk.session import create_session_id, session
 
 import pyflk.exceptions as exceptions
 
-# define common service exception's response body
-ERROR_MAP = {
-    '401': Response('<h1>401 Unknown or unsupported method</h1>', content_type='text/html; charset=UTF-8', status=401),
-    '404': Response('<h1>404 Resource Not Found</h1>', content_type='text/html; charset=UTF-8', status=404),
-    '503': Response('<h1>503 Unknown function type</h1>', content_type='text/html; charset=UTF-8', status=503)
-}
-
 # define file type
 TYPE_MAP = {
     'css': 'text/css',
@@ -63,6 +56,7 @@ def render_json(data):
     # return package response body
     return Response(data, content_type="%s; charset=UTF-8" % content_type, status=200)
 
+@exceptions.capture
 def render_file(file_path, file_name=None):
     '''
     return let client save file to local response body
@@ -70,7 +64,11 @@ def render_file(file_path, file_name=None):
     
     # decide server if or not exist that file, if not then return 404 error
     if os.path.exists(file_path):
-        
+       
+        # decide whether or not have read permission, if not then throw insufficient permission exception
+        if not os.access(file_path, os.R_OK):
+            raise exceptions.RequireReadPermissionError
+ 
         # read file content
         with open(file_path, 'rb') as f:
             content = f.read()
@@ -87,8 +85,8 @@ def render_file(file_path, file_name=None):
         # return response
         return Response(content, headers=headers, status=200)
 
-    # if this file not exists, return 404 error
-    return ERROR_MAP['404']
+    # if this file not exists, return file not found error
+    raise exceptions.FileNotExistsError
 
 class PyFlk:
     '''
@@ -153,6 +151,7 @@ class PyFlk:
             # bind URL and view object, final endpoint name format is `controller name` + "." + define endpoint name
             self.bind_view(rule['url'], rule['view'], name + '.' + rule['endpoint'])
 
+    @exceptions.capture
     def add_url_rule(self, url, func, func_type, endpoint=None, **options):
         '''
         add url rule
@@ -176,6 +175,7 @@ class PyFlk:
         # add endpoint and request handle function mapping
         self.function_map[endpoint] = ExecFunc(func, func_type, **options)
 
+    @exceptions.capture
     def dispatch_static(self, static_path):
         '''
         dispatch static resource route
@@ -198,9 +198,10 @@ class PyFlk:
             return Response(rep, content_type=doc_type)
         else:
             
-            # if not found response body for it, return 404 page
-            return ERROR_MAP['404']
+            # if not found response body for it, throw PageNotFoundError
+            raise exceptions.PageNotFoundError
 
+    @exceptions.capture
     def dispatch_request(self, request):
         '''
         dispatch route
@@ -240,9 +241,9 @@ class PyFlk:
             # if static not first, then from the URL and endpoint mapping table gets endpoint
             endpoint = self.url_map.get(url, None)
 
-        # if endpoint is none, return 404
+        # if endpoint is none, throw PageNotFoundError
         if endpoint is None:
-            return ERROR_MAP['404']
+            raise exceptions.PageNotFoundError
 
         # gets endpoint's execute function
         exec_function = self.function_map[endpoint]
@@ -269,8 +270,8 @@ class PyFlk:
             else:
                 ''' unkown request method '''
 
-                # return 401 error response body
-                return ERROR_MAP['401']
+                # throw request mothod unsupported exception
+                raise exceptions.InvalidRequestMethodError
         elif exec_function.func_type == 'view':
             ''' view handle result '''
 
@@ -284,8 +285,8 @@ class PyFlk:
         else:
             ''' unknown type handle '''
 
-            # return 503 error response body
-            return ERROR_MAP['503']
+            # raise UnknownFuncError
+            raise exceptions.UnknownFuncError
        
         # define HTTP status code 200, its means request success
         status = 200

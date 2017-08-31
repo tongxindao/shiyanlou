@@ -1,9 +1,21 @@
 from pyflk.view import Controller
 from pyflk.session import session
-from pyflk import PyFlk, simple_template, redirect, render_json, render_file
+from pyflk import PyFlk, simple_template, redirect, render_json, render_file, exceptions
 
 from core.database import dbconn
 from core.base_view import BaseView, SessionView
+
+@exceptions.reload(404)
+def test_reload():
+    return '<h1>test reload 404 exception</h1>'
+
+class Download(BaseView):
+    '''
+    it's a test for capture exception
+    '''
+
+    def get(self, request):
+        return render_file('/etc/shadow')
 
 class Register(BaseView):
     def get(self, request):
@@ -24,9 +36,11 @@ class Register(BaseView):
             # if fail, put error information for debug
             return render_json(ret.to_dict())
 
+'''
 class Download(BaseView):
     def get(self, request):
         return render_file("main.py")
+'''
 
 class API(BaseView):
     def get(self, request):
