@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../..')
+
 from pyflk.view import Controller
 from pyflk.session import session
 from pyflk import PyFlk, simple_template, redirect, render_json, render_file, exceptions

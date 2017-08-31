@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Wechat Web Platform index</title>
+    <link rel="stylesheet" href="/static/index/index.css">
+    <link rel="stylesheet" href="/static/public/font-awesome.min.css">
+    <script src="/static/public/jquery-1.11.1.js"></script>
+    <script src="/static/public/layer.js"></script>
+  </head>
+
+  <body>
+    <section class="content-box">
+      <header class="content-box-header">
+        <h2>
+          <i class="fa fa-wechat">Web Automation Platform</i>
+        </h2>
+      </header>
+
+      <nav class="content-box-nav">
+        <header class="nav-header">
+          <p>
+            <i class="fa fa-power-off">
+              <a href="/logout"></a>
+            </i>
+          </p>
+        </header>
+
+        <section class="user-info">
+          <img src="/static/head/{{ user }}/user.jpeg" alt="user info" class="user-info-image">
+          <p>{{ message }} {{ user }}</p>
+        </section>
+
+        <ul>
+          <li class="active-li">
+            <a target="iframe" href="/user">
+              <i class="fa fa-user-circle-o">friends list</i>
+            </a>
+          </li>
+
+          <li>
+            <i class="fa fa-plus">free expansion</i>
+          </li>
+        </ul>
+      <nav/>
+
+      <section class="content-box-body">
+        <iframe name="iframe" id="iframe" src="/user" frameborder="0" width="100%" height="100%"></iframe>
+      </section>
+    </section>
+
+    <script src="/static/index/index.js"></script>
+  </body>
+</html>
