@@ -14,7 +14,7 @@ char* readline(char* prompt) {
     return cpy;
 }
 
-void add_history(char* unused): {}
+void add_history(char* unused) {}
 
 #else
 #include <editline/readline.h>
