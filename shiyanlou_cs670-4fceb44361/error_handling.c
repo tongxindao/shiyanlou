@@ -139,7 +139,7 @@ int main(int argc, char** argv) {
         ", 
         Number, Operator, Expr, Lispy);
       
-    puts("Lispy Version 0.3");
+    puts("Lispy Version 0.4");
     puts("Press Ctrl+c to Exit\n");
 
     while(1) {

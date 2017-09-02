@@ -1,5 +1,4 @@
 #include "./mpc/mpc.h"
-
 #ifdef _WIN32
 
 static char buffer[2048];
@@ -24,7 +23,7 @@ void add_history(char* unused) {}
 enum { LVAL_ERR, LVAL_NUM, LVAL_SYM, LVAL_SEXPR };
 
 /* Declare New lval Struct */
-typedef struct {
+typedef struct lval {
     int type;
     long num;
     /* Error and Symbol types have some string data */
@@ -281,12 +280,12 @@ int main(int argc, char** argv) {
             number : /-?[0-9]+/ ;                            \
             symbol : '+' | '-' | '*' | '/' ;                 \
             sexpr  : '(' <expr>* ')' ;                       \
-            expr   : <number> | '(' <operator> <expr>+ ')' ; \
+            expr   : <number> | <symbol> | <sexpr> ;         \
             lispy  : /^/ <expr>* /$/ ;                       \
         ", 
         Number, Symbol, Sexpr, Expr, Lispy);
       
-    puts("Lispy Version 0.3");
+    puts("Lispy Version 0.5");
     puts("Press Ctrl+c to Exit\n");
 
     while(1) {
