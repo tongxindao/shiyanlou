@@ -1,3 +1,4 @@
-Version 0.1 ------ libedit-dev
-Version 0.2 ------ mpc
-Version 0.3 ------ gcc -std=c99 -Wall evaluation.c ../v0.2/mpc-master/mpc.c -ledit -lm -o evaluation
+Version 0.1 ------ libedit-dev prompt.c
+Version 0.2 ------ mpc parsing.c
+Version 0.3 ------ gcc -std=c99 -Wall evaluation.c ./mpc/mpc.c -ledit -lm -o evaluation
+Version 0.4 ------ gcc -std=c99 -Wall error_handling.c ./mpc/mpc.c -ledit -lm -o error_handling
