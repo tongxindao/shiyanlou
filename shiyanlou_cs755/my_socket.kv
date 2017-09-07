@@ -1,0 +1,72 @@
+#:kivy 1.8.0
+
+myCarousel:
+
+<myCarousel>:
+	loop:True
+	id:my_Carousel
+	text_input5:text_input5
+	text_input6:text_input6
+	text_input7:text_input7
+	connect:connect
+	canvas:
+		Rectangle:
+	        size: self.size
+	        source:'022.jpg'
+	  
+	BoxLayout:
+		orientation: "vertical"
+		BoxLayout: 
+			height: "40dp" #��һ�и߶�Ϊ40����
+			size_hint_y: None
+			Label:
+				text: 'ip:'
+				size_hint_x: 25 #ռ�����ȵ�25%
+			TextInput:
+			    id: text_input5
+			    size_hint_x: 50
+			    text:'192.168.42.4'
+			    focus: True
+			    multiline: False
+			Button:
+				id:connect
+			    text: "Connect"
+			    size_hint_x: 25
+			    on_press: app.connect_server()
+		
+		BoxLayout:
+			Label:
+				size_hint_x: 5
+			TextInput:
+				id: text_input7
+				size_hint_x: 90
+				focus: True
+				multiline: True
+			Label:	
+				size_hint_x: 5
+		
+		BoxLayout: 
+			height: "40dp" #��һ�и߶�Ϊ40����
+			size_hint_y: None
+			Label:
+				text: 'message:'
+				size_hint_x: 25 #ռ�����ȵ�25%
+			TextInput:
+			    id: text_input6
+			    size_hint_x: 50
+			    focus: True
+			    multiline: False
+			Button:
+			    text: "Send"
+			    size_hint_x: 25
+			    on_press: app.send()
+		
+	
+
+			
+	       
+       
+<CTextInput@TextInput>
+    on_focus:
+        screen = self.parent.parent.parent.parent
+        if screen.parent: screen.focused = self		
