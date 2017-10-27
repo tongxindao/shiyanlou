@@ -3,7 +3,7 @@
 					布尔型 bool
 					复数 complex
 			
-Python基本数据类型			字符串 str 不可变 |
+	Python基本数据类型		字符串 str 不可变 |
 				序列	列表 list	  |--有序、可用下标索引来访问，支持切片[start:end]
 					元组 tuple	  |
 			组
