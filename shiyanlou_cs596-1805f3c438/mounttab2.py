@@ -1,4 +1,5 @@
 import os
+
 def parse_mounts():
     result = []
     if os.path.exists('/proc/mounts'):

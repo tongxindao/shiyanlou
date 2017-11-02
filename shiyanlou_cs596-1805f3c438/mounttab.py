@@ -1,4 +1,5 @@
 import os
+
 def mount_details():
     if os.path.exists('/proc/mounts'):
         fd = open('/proc/mounts')
