@@ -44,7 +44,7 @@ def cmdHandle(sock, parser):
                 m_cmd = options.cmd
                 # start DDos command
                 if m_cmd.lower() == "start":
-                    if curProcess != None and curProcess.is_alive():
+                    if curProcess is not None and curProcess.is_alive():
                         curProcess.terminate()
                         curProcess = None
                         os.system("clear")
@@ -85,4 +85,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
