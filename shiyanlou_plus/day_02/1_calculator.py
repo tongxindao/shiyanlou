@@ -45,7 +45,7 @@ def main():
         salary = sys.argv[1]
         taxable_income = cal_taxable_income(salary)
         calculator_tax(taxable_income)
-    except:
+    except IndexError:
         print("must be input a integer number parameter!")
 
 
