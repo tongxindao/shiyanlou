@@ -11,7 +11,8 @@ except KeyError:
 print("coursesdict[2] is: {0}".format(coursesdict[2]))
 print("coursesdict.get(4) is: {0}".format(coursesdict.get(4)))
 print("coursesdict.get(2) is: {0}".format(coursesdict.get(2)))
-print("coursesdict.get(4, \'default\') is: {0}".format(coursesdict.get(4, 'default')))
+print("coursesdict.get(4, \'default\') is: {0}".format(
+    coursesdict.get(4, 'default')))
 
 dict_from_tuple = dict(((1, "Linux"), (2, "Vim")))
 print("dict_from_tuple is: {0}".format(dict_from_tuple))

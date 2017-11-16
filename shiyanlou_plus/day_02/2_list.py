@@ -9,7 +9,7 @@ print("courses is: {0}".format(courses[-2]))
 
 try:
     print("courses is: {0}".format(courses[9]))
-except IndexError: 
+except IndexError:
     print("IndexError: list index out of range!!!")
 
 courses.insert(0, "Java")
