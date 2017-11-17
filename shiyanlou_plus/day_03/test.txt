@@ -9,7 +9,7 @@ def get_salary(salary):
             return salary
         else:
             raise
-    except BaseException:
+    except:
         print("Parameter Error")
         sys.exit(0)
 
@@ -22,8 +22,8 @@ def cal_social_security(salary):
     matermity = 0.00
     provident = 0.06
 
-    social_security_tax = pension + medical \
-        + unemployment + injury + matermity + provident
+    social_security_tax = pension + medical + unemployment \
+                            + injury + matermity + provident
     social_security = salary * social_security_tax
 
     return social_security
@@ -75,15 +75,14 @@ def main():
             social_security = cal_social_security(salary)
             taxable_income = cal_taxable_income(salary, social_security)
             tax = calculator_tax(taxable_income)
-            after_salary = after_salary_tax(salary, social_security, tax)
-
+            after_salary = after_salary_tax(salary, 
+                            social_security, tax)
+            
             information[job_number] = after_salary
 
-            print(
-                "{0}:{1}".format(
-                    job_number, Decimal(
-                        information[job_number]).quantize(
-                        Decimal(".01"))))
+            print("{0}:{1}".format(job_number, 
+                Decimal(information[job_number]).quantize(
+                Decimal(".01"))))
     except IndexError:
         print("Please input \'job_number:salary\' format parameter!")
 
