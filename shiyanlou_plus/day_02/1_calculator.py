@@ -2,21 +2,40 @@ import sys
 from decimal import Decimal
 
 
-def cal_taxable_income(salary):
+def get_salary(salary):
     try:
-        social_security = 0
-        start_point = 3500
-        salary = int(salary)
-        taxable = 0
-        taxable_income = 0
-
+        salary = abs(int(salary))
         if salary > 0:
-            taxable = salary - social_security - start_point
-        if taxable >= 0:
-            taxable_income = taxable
-        return taxable_income
-    except:
+            return salary
+        else:
+            raise
+    except BaseException:
         print("Parameter Error")
+        sys.exit(0)
+
+
+def cal_social_security(salary):
+    pension = 0.08
+    medical = 0.02
+    unemployment = 0.005
+    injury = 0.00
+    matermity = 0.00
+    provident = 0.06
+
+    social_security_tax = pension + medical \
+        + unemployment + injury + matermity + provident
+    social_security = salary * social_security_tax
+
+    return social_security
+
+
+def cal_taxable_income(salary, social_security):
+    start_point = 3500
+    taxable_income = 0
+
+    taxable_income = salary - social_security - start_point
+
+    return taxable_income
 
 
 def calculator_tax(taxable_income):
@@ -36,17 +55,37 @@ def calculator_tax(taxable_income):
         tax = taxable_income * 0.35 - 5505
     else:
         tax = taxable_income * 0.45 - 13505
-    print("{0}".format(Decimal(tax).quantize(Decimal('.01'))))
     return tax
+
+
+def after_salary_tax(salary, social_security, tax):
+    after_tax_salary = salary - social_security - tax
+    return after_tax_salary
 
 
 def main():
     try:
-        salary = sys.argv[1]
-        taxable_income = cal_taxable_income(salary)
-        calculator_tax(taxable_income)
+        information = {}
+        for arg in sys.argv[1:]:
+            job_number = arg.split(":")[0]
+            before_salary = arg.split(":")[1]
+            information[job_number] = before_salary
+
+            salary = get_salary(information[job_number])
+            social_security = cal_social_security(salary)
+            taxable_income = cal_taxable_income(salary, social_security)
+            tax = calculator_tax(taxable_income)
+            after_salary = after_salary_tax(salary, social_security, tax)
+
+            information[job_number] = after_salary
+
+            print(
+                "{0}:{1}".format(
+                    job_number, Decimal(
+                        information[job_number]).quantize(
+                        Decimal(".01"))))
     except IndexError:
-        print("must be input a integer number parameter!")
+        print("Please input \'job_number:salary\' format parameter!")
 
 
 if __name__ == "__main__":
