@@ -1,0 +1,107 @@
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 3.0.7 (3bbc4243/1) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 21233
+ |    `-._   `._    /     _.-'    |     PID: 10679
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+10679:M 13 Nov 15:50:32.777 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+10679:M 13 Nov 15:50:32.777 # Server started, Redis version 3.0.7
+10679:M 13 Nov 15:50:32.778 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+10679:M 13 Nov 15:50:32.778 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+10679:M 13 Nov 15:50:32.778 * The server is now ready to accept connections on port 21233
+10679:M 13 Nov 15:50:32.802 - Accepted 127.0.0.1:45362
+10679:M 13 Nov 15:50:32.807 - 1 clients connected (0 slaves), 778272 bytes in use
+10679:M 13 Nov 15:50:32.812 - Client closed connection
+10679:M 13 Nov 15:50:33.007 - Accepted 127.0.0.1:45363
+10679:M 13 Nov 15:50:37.942 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:50:37.942 - 1 clients connected (0 slaves), 815952 bytes in use
+10679:M 13 Nov 15:50:43.047 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:50:43.047 - 1 clients connected (0 slaves), 816432 bytes in use
+10679:M 13 Nov 15:50:48.087 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:50:48.087 - 1 clients connected (0 slaves), 816752 bytes in use
+10679:M 13 Nov 15:50:53.162 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:50:53.162 - 1 clients connected (0 slaves), 814592 bytes in use
+10679:M 13 Nov 15:50:58.232 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:50:58.232 - 1 clients connected (0 slaves), 815392 bytes in use
+10679:M 13 Nov 15:51:03.267 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:51:03.267 - 1 clients connected (0 slaves), 814752 bytes in use
+10679:M 13 Nov 15:51:08.342 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:51:08.342 - 1 clients connected (0 slaves), 816432 bytes in use
+10679:M 13 Nov 15:51:13.427 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:51:13.427 - 1 clients connected (0 slaves), 815792 bytes in use
+10679:M 13 Nov 15:51:18.482 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:51:18.482 - 1 clients connected (0 slaves), 816832 bytes in use
+10679:M 13 Nov 15:51:23.502 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:51:23.502 - 1 clients connected (0 slaves), 816512 bytes in use
+10679:M 13 Nov 15:51:28.582 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:51:28.582 - 1 clients connected (0 slaves), 816352 bytes in use
+10679:M 13 Nov 15:51:33.052 * 10000 changes in 60 seconds. Saving...
+10679:M 13 Nov 15:51:33.052 * Background saving started by pid 10759
+10759:C 13 Nov 15:51:33.067 * DB saved on disk
+10759:C 13 Nov 15:51:33.067 * RDB: 0 MB of memory used by copy-on-write
+10679:M 13 Nov 15:51:33.154 * Background saving terminated with success
+10679:M 13 Nov 15:51:33.657 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:51:33.657 - 1 clients connected (0 slaves), 816832 bytes in use
+10679:M 13 Nov 15:51:38.712 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:51:38.712 - 1 clients connected (0 slaves), 815472 bytes in use
+10679:M 13 Nov 15:51:43.897 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:51:43.897 - 1 clients connected (0 slaves), 815472 bytes in use
+10679:M 13 Nov 15:51:49.007 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:51:49.012 - 1 clients connected (0 slaves), 816192 bytes in use
+10679:M 13 Nov 15:51:54.072 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:51:54.072 - 1 clients connected (0 slaves), 815232 bytes in use
+10679:M 13 Nov 15:51:59.092 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:51:59.092 - 1 clients connected (0 slaves), 815952 bytes in use
+10679:M 13 Nov 15:52:04.137 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:52:04.137 - 1 clients connected (0 slaves), 816192 bytes in use
+10679:M 13 Nov 15:52:09.207 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:52:09.207 - 1 clients connected (0 slaves), 816192 bytes in use
+10679:M 13 Nov 15:52:14.282 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:52:14.282 - 1 clients connected (0 slaves), 816768 bytes in use
+10679:M 13 Nov 15:52:19.337 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:52:19.337 - 1 clients connected (0 slaves), 816096 bytes in use
+10679:M 13 Nov 15:52:24.352 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:52:24.352 - 1 clients connected (0 slaves), 815968 bytes in use
+10679:M 13 Nov 15:52:29.427 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:52:29.427 - 1 clients connected (0 slaves), 816160 bytes in use
+10679:M 13 Nov 15:52:34.052 * 10000 changes in 60 seconds. Saving...
+10679:M 13 Nov 15:52:34.052 * Background saving started by pid 10857
+10857:C 13 Nov 15:52:34.112 * DB saved on disk
+10857:C 13 Nov 15:52:34.117 * RDB: 0 MB of memory used by copy-on-write
+10679:M 13 Nov 15:52:34.157 * Background saving terminated with success
+10679:M 13 Nov 15:52:34.462 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:52:34.462 - 1 clients connected (0 slaves), 816096 bytes in use
+10679:M 13 Nov 15:52:39.477 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:52:39.477 - 1 clients connected (0 slaves), 816224 bytes in use
+10679:M 13 Nov 15:52:44.547 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:52:44.547 - 1 clients connected (0 slaves), 816160 bytes in use
+10679:M 13 Nov 15:52:49.637 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:52:49.637 - 1 clients connected (0 slaves), 816000 bytes in use
+10679:M 13 Nov 15:52:54.892 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:52:54.892 - 1 clients connected (0 slaves), 816384 bytes in use
+10679:M 13 Nov 15:52:59.957 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:52:59.957 - 1 clients connected (0 slaves), 816160 bytes in use
+10679:M 13 Nov 15:53:05.007 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:53:05.007 - 1 clients connected (0 slaves), 816160 bytes in use
+10679:M 13 Nov 15:53:10.078 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:53:10.078 - 1 clients connected (0 slaves), 817832 bytes in use
+10679:M 13 Nov 15:53:15.097 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+10679:M 13 Nov 15:53:15.097 - 1 clients connected (0 slaves), 817960 bytes in use
+10679:signal-handler (1510588398) Received SIGINT scheduling shutdown...
+10679:M 13 Nov 15:53:18.642 - Client closed connection
+10679:M 13 Nov 15:53:18.662 # User requested shutdown...
+10679:M 13 Nov 15:53:18.662 * Saving the final RDB snapshot before exiting.
+10679:M 13 Nov 15:53:18.682 * DB saved on disk
+10679:M 13 Nov 15:53:18.682 # Redis is now ready to exit, bye bye...

@@ -1,0 +1,33 @@
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 3.0.7 (3bbc4243/1) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 21216
+ |    `-._   `._    /     _.-'    |     PID: 9797
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+9797:M 13 Nov 15:44:40.027 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+9797:M 13 Nov 15:44:40.027 # Server started, Redis version 3.0.7
+9797:M 13 Nov 15:44:40.027 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+9797:M 13 Nov 15:44:40.027 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+9797:M 13 Nov 15:44:40.028 * The server is now ready to accept connections on port 21216
+9797:M 13 Nov 15:44:40.037 - Accepted 127.0.0.1:47621
+9797:M 13 Nov 15:44:40.037 - 1 clients connected (0 slaves), 778272 bytes in use
+9797:M 13 Nov 15:44:40.047 - Client closed connection
+9797:M 13 Nov 15:44:40.227 - Accepted 127.0.0.1:47622
+9797:M 13 Nov 15:44:40.247 - Accepted 127.0.0.1:47623
+9797:signal-handler (1510587880) Received SIGTERM scheduling shutdown...
+9797:M 13 Nov 15:44:40.337 # User requested shutdown...
+9797:M 13 Nov 15:44:40.337 * Saving the final RDB snapshot before exiting.
+9797:M 13 Nov 15:44:40.344 * DB saved on disk
+9797:M 13 Nov 15:44:40.344 # Redis is now ready to exit, bye bye...

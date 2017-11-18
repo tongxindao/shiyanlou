@@ -1,0 +1,61 @@
+                _._                                                  
+           _.-``__ ''-._                                             
+      _.-``    `.  `_.  ''-._           Redis 3.0.7 (3bbc4243/1) 64 bit
+  .-`` .-```.  ```\/    _.,_ ''-._                                   
+ (    '      ,       .-`  | `,    )     Running in standalone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 21213
+ |    `-._   `._    /     _.-'    |     PID: 9716
+  `-._    `-._  `-./  _.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |           http://redis.io        
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+ |`-._`-._    `-.__.-'    _.-'_.-'|                                  
+ |    `-._`-._        _.-'_.-'    |                                  
+  `-._    `-._`-.__.-'_.-'    _.-'                                   
+      `-._    `-.__.-'    _.-'                                       
+          `-._        _.-'                                           
+              `-.__.-'                                               
+
+9716:M 13 Nov 15:44:23.487 # WARNING: The TCP backlog setting of 511 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of 128.
+9716:M 13 Nov 15:44:23.488 # Server started, Redis version 3.0.7
+9716:M 13 Nov 15:44:23.488 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+9716:M 13 Nov 15:44:23.488 # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis. To fix this issue run the command 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' as root, and add it to your /etc/rc.local in order to retain the setting after a reboot. Redis must be restarted after THP is disabled.
+9716:M 13 Nov 15:44:23.488 * The server is now ready to accept connections on port 21213
+9716:M 13 Nov 15:44:23.507 - Accepted 127.0.0.1:54968
+9716:M 13 Nov 15:44:23.507 - 1 clients connected (0 slaves), 778272 bytes in use
+9716:M 13 Nov 15:44:23.547 - Client closed connection
+9716:M 13 Nov 15:44:23.732 - Accepted 127.0.0.1:54970
+9716:M 13 Nov 15:44:28.558 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+9716:M 13 Nov 15:44:28.558 - 1 clients connected (0 slaves), 780160 bytes in use
+9716:M 13 Nov 15:44:33.603 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+9716:M 13 Nov 15:44:33.603 - 1 clients connected (0 slaves), 780160 bytes in use
+9716:M 13 Nov 15:44:38.654 - DB 9: 1 keys (0 volatile) in 4 slots HT.
+9716:M 13 Nov 15:44:38.654 - 1 clients connected (0 slaves), 780064 bytes in use
+9716:M 13 Nov 15:44:43.732 - DB 9: 3 keys (0 volatile) in 4 slots HT.
+9716:M 13 Nov 15:44:43.732 - 1 clients connected (0 slaves), 1115128 bytes in use
+9716:M 13 Nov 15:44:48.792 - DB 9: 3 keys (0 volatile) in 4 slots HT.
+9716:M 13 Nov 15:44:48.792 - 1 clients connected (0 slaves), 1703928 bytes in use
+9716:M 13 Nov 15:44:53.892 - DB 9: 3 keys (0 volatile) in 4 slots HT.
+9716:M 13 Nov 15:44:53.892 - 1 clients connected (0 slaves), 2211384 bytes in use
+9716:M 13 Nov 15:44:58.937 - DB 9: 3 keys (0 volatile) in 4 slots HT.
+9716:M 13 Nov 15:44:58.937 - 1 clients connected (0 slaves), 2740024 bytes in use
+9716:M 13 Nov 15:45:04.052 - DB 9: 3 keys (0 volatile) in 4 slots HT.
+9716:M 13 Nov 15:45:04.052 - 1 clients connected (0 slaves), 3344488 bytes in use
+9716:M 13 Nov 15:45:09.137 - DB 9: 3 keys (0 volatile) in 4 slots HT.
+9716:M 13 Nov 15:45:09.137 - 1 clients connected (0 slaves), 3892968 bytes in use
+9716:M 13 Nov 15:45:14.152 - DB 9: 3 keys (0 volatile) in 4 slots HT.
+9716:M 13 Nov 15:45:14.152 - 1 clients connected (0 slaves), 4455208 bytes in use
+9716:M 13 Nov 15:45:19.192 - DB 9: 3 keys (0 volatile) in 4 slots HT.
+9716:M 13 Nov 15:45:19.192 - 1 clients connected (0 slaves), 4987368 bytes in use
+9716:M 13 Nov 15:45:24.047 * 10000 changes in 60 seconds. Saving...
+9716:M 13 Nov 15:45:24.048 * Background saving started by pid 9906
+9906:C 13 Nov 15:45:24.093 * DB saved on disk
+9906:C 13 Nov 15:45:24.093 * RDB: 0 MB of memory used by copy-on-write
+9716:M 13 Nov 15:45:24.148 * Background saving terminated with success
+9716:M 13 Nov 15:45:24.252 - DB 9: 3 keys (0 volatile) in 4 slots HT.
+9716:M 13 Nov 15:45:24.252 - 1 clients connected (0 slaves), 5514408 bytes in use
+9716:signal-handler (1510587929) Received SIGTERM scheduling shutdown...
+9716:M 13 Nov 15:45:29.867 # User requested shutdown...
+9716:M 13 Nov 15:45:29.867 * Saving the final RDB snapshot before exiting.
+9716:M 13 Nov 15:45:29.882 * DB saved on disk
+9716:M 13 Nov 15:45:29.882 # Redis is now ready to exit, bye bye...
