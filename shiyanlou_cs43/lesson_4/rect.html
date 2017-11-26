@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>my page</title>
+    </head>
+    <body>
+        <canvas id="demoCanvas" width="500" height="500">
+            <p>
+                HTML5 Canvas
+            </p>
+        </canvas>
+        <script type="text/javascript">
+            var canvasDom = document.getElementById("demoCanvas");
+            var context = canvasDom.getContext('2d');
+            context.strokeStyle = "red";
+            context.strokeRect(10, 10, 190, 190);
+            context.fillStyle = "blue";
+            context.fillRect(110, 110, 100, 100);
+        </script>
+    </body>
+</html>

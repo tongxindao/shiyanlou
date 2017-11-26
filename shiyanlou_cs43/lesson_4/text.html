@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>my page</title>
+    </head>
+    <body>
+        <canvas id="demoCanvas" width="500" height="600">
+            <p>
+                HTML5 Canvas
+            </p>
+        </canvas>
+        <script type="text/javascript">
+            var canvasDom = document.getElementById("demoCanvas");
+            var context = canvasDom.getContext('2d');
+            context.moveTo(200, 200);
+            context.font = "Bold 50px Arial";
+            context.textAlign = "left";
+            context.fillStyle = "#005600";
+            context.fillText("Tongxindao!", 10, 50);
+            context.strokeText("www.shiyanlou.com", 10, 100);
+        </script>
+    </body>
+</html>
