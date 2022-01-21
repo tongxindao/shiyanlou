@@ -9,7 +9,7 @@ Flask-PyMongo==0.4.1
 genpac==1.4.1
 idna==2.2
 ipaddress==1.0.17
-ipython==5.1.0
+ipython==7.16.3
 ipython-genutils==0.1.0
 itsdangerous==0.24
 Jinja2==2.8
