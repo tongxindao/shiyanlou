@@ -37,7 +37,7 @@ SecretStorage==2.3.1
 simplegeneric==0.8.1
 six==1.10.0
 SQLAlchemy==1.1.6
-supervisor==3.3.1
+supervisor==3.3.3
 traitlets==4.3.1
 unity-lens-photos==1.0
 vboxapi==1.0
